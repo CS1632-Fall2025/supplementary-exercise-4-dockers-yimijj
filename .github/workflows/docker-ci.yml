@@ -17,8 +17,6 @@ jobs:
       contents: read
 
     steps:
-      - name: Wait For Webserver To Launch
-        run:  wait-for-webserver.sh
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -41,6 +39,9 @@ jobs:
 
       - name: Launch Web Service
         run: docker compose up -d
+
+      - name: Wait For Webserver To Launch
+        run:  wait-for-webserver.sh
 
       - name: Run Selenium Tests
         run: cd selenium && mvn test
