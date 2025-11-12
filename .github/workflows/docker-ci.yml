@@ -17,6 +17,8 @@ jobs:
       contents: read
 
     steps:
+      - name: Wait For Webserver To Launch
+        run:  wait-for-webserver.sh
 
       - name: Checkout repository
         uses: actions/checkout@v3
